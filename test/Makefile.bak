@@ -1,0 +1,31 @@
+#GTEST_DIR = /home/ttpod/Andy/Lib/gtest
+GTEST_DIR = ./gtest
+
+HEADERS_DIR := -I$(GTEST_DIR)/include -I../utils -I../common
+
+LIBS_DIR	:= -L$(GTEST_DIR)/lib
+LIBS	=  -lpthread
+
+vpath %.cpp ../utils
+vpath %.h ../utils ../common
+
+SRCS := Profile.cpp profile_test.cpp test_main.cpp
+
+OBJS = $(patsubst %.cpp,%.o,$(SRCS))
+
+BIN := test
+
+all:$(OBJS)
+	g++ -Wall -g -o $(BIN) $(OBJS) $(GTEST_DIR)/lib/gtest.a $(LIBS)
+
+%.o:%.cpp
+	g++ -Wall -g -c $(HEADERS_DIR) -o $@ $<
+
+run_test:
+	./$(BIN) 
+
+clean:
+	rm -f *.o
+	rm -f *.d
+	rm -f $(BIN)
+.PHONY:clean all run_test

@@ -1,0 +1,2 @@
+2013-05-17 23:59:18  [INFO]	Tag  11  lower than min flush threshold(500),so do not flush varTags this time!
+2013-05-18 00:00:38  [INFO]	Tag  11  lower than min flush threshold(500),so do not flush varTags this time!
